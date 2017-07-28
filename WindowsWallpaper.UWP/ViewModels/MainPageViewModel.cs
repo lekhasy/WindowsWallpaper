@@ -28,7 +28,7 @@ namespace WindowsWallpaper.UWP.ViewModels
 
         public async Task InitDataAsync()
         {
-            ImageSource.BingDayliImageSource source = new ImageSource.BingDayliImageSource();
+            ImageSource.BingDailyImageSource source = new ImageSource.BingDailyImageSource();
             Images = (await source.GetTodayImageSourceAsync()).ToList();
         }
     }

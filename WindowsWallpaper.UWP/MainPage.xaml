@@ -13,7 +13,6 @@
             <FlipView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
-                        <cpn:MyUserControl1 ImageSource="123"></cpn:MyUserControl1>
                         <cpn:ImageItem ImageSource="1234"></cpn:ImageItem>
                     </Grid>
                 </DataTemplate>

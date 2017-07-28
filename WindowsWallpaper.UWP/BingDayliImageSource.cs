@@ -9,7 +9,7 @@ using WindowsWallpaper.Domain;
 
 namespace WindowsWallpaper.ImageSource
 {
-    public class BingDayliImageSource : IDailyImageSource
+    public class BingDailyImageSource : IDailyImageSource
     {
         public async Task<IEnumerable<Domain.ImageSource>> GetTodayImageSourceAsync()
         {
