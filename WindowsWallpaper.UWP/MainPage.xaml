@@ -21,9 +21,7 @@
             </Grid>
         </PivotItem>
         <PivotItem Header="Settings">
-            <TextBlock>
-                Setting tab
-            </TextBlock>
+            <cpn:SettingTab></cpn:SettingTab>
         </PivotItem>
     </Pivot>
 </Page>
