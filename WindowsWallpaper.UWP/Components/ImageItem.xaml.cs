@@ -22,13 +22,13 @@ namespace WindowsWallpaper.UWP.Components
         ViewModels.ImageItemViewModel vm;
 
         public static readonly DependencyProperty ImageSourceProperty =
-        DependencyProperty.Register("ImageSource", typeof(string), typeof(ImageItem), new PropertyMetadata(""));
+        DependencyProperty.Register("ImageSource", typeof(Domain.ImageSource), typeof(ImageItem), new PropertyMetadata(null));
 
-        public string ImageSource
+        public Domain.ImageSource ImageSource
         {
             get
             {
-                return (string)GetValue(ImageSourceProperty);
+                return (Domain.ImageSource)GetValue(ImageSourceProperty);
             }
             set
             {
@@ -36,10 +36,26 @@ namespace WindowsWallpaper.UWP.Components
             }
         }
 
+        public static readonly DependencyProperty ImageSourcePropertyStr =
+        DependencyProperty.Register("ImageSourceStr", typeof(string), typeof(ImageItem), new PropertyMetadata(null));
+
+        public string ImageSourceStr
+        {
+            get
+            {
+                return (string)GetValue(ImageSourcePropertyStr);
+            }
+            set
+            {
+                SetValue(ImageSourcePropertyStr, value);
+            }
+        }
+
         public ImageItem()
         {
             this.InitializeComponent();
-            vm = ViewModels.ImageItemViewModel.Create(null);
+            vm = ViewModels.ImageItemViewModel.Create(ImageSource);
+            this.DataContext = vm;
         }
     }
 }

@@ -5,16 +5,14 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Loaded="Page_Loaded"
-    mc:Ignorable="d"
-    xmlns:cpn = "using:WindowsWallpaper.UWP.Components">
+    xmlns:cpn = "using:WindowsWallpaper.UWP.Components"
+    mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <FlipView ItemsSource="{Binding Images}">
+        <FlipView ItemsSource="{Binding Images}" x:Name="imageSlider">
             <FlipView.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
-                        <cpn:ImageItem ImageSource="1234"></cpn:ImageItem>
-                    </Grid>
+                    <cpn:ImageItem Height="{Binding ElementName=imgSlider, Path=Height}" DataContext="{Binding}" ImageSourceStr="{Binding Path=str}" ImageSource="{Binding}"></cpn:ImageItem>
                 </DataTemplate>
             </FlipView.ItemTemplate>
         </FlipView>

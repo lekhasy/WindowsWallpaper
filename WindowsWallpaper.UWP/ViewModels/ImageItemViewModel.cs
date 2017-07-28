@@ -10,7 +10,7 @@ namespace WindowsWallpaper.UWP.ViewModels
     {
         private Domain.ImageSource _source;
 
-        public Domain.ImageSource Source
+        public Domain.ImageSource SourceImg
         {
             get { return _source; }
             set
@@ -25,7 +25,7 @@ namespace WindowsWallpaper.UWP.ViewModels
 
         private ImageItemViewModel(Domain.ImageSource source)
         {
-            Source = source;
+            SourceImg = source;
         }
 
         public static ImageItemViewModel Create(Domain.ImageSource source)

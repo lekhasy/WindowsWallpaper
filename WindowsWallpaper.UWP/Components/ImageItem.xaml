@@ -9,10 +9,12 @@
     d:DesignWidth="400">
 
     <Grid>
-        <Canvas>
-            <Image Stretch="Uniform" Source="{Binding Source}"></Image>
+        <Canvas x:Name="canvas1">
+            <Image Stretch="UniformToFill" Source="{Binding Source}" 
+                   Height="{Binding ActualHeight, ElementName=canvas1, Mode=OneWay}" 
+                   Width="{Binding ActualWidth, ElementName=canvas1, Mode=OneWay}"/>
             <TextBlock  Canvas.ZIndex="1" Text="{Binding Description}"/>
         </Canvas>
     </Grid>
-    
+
 </UserControl>
