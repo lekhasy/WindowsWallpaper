@@ -107,7 +107,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="IDailyImageSource.cs" />
+    <Compile Include="ILocalstorageProvider.cs" />
     <Compile Include="ImageSource.cs" />
+    <Compile Include="LocalStorageKeys.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\WindowsWallpaper.Domain.rd.xml" />
   </ItemGroup>
