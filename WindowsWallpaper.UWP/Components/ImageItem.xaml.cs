@@ -22,22 +22,24 @@ namespace WindowsWallpaper.UWP.Components
         ViewModels.ImageItemViewModel vm;
 
         public static readonly DependencyProperty ImageSourceProperty =
-        DependencyProperty.Register("ImageSource", typeof(Domain.ImageSource), typeof(ImageItem), new PropertyMetadata(null));
-        public Domain.ImageSource ImageSource
+        DependencyProperty.Register("ImageSource", typeof(string), typeof(ImageItem), new PropertyMetadata(4));
+
+        public string ImageSource
         {
             get
             {
-                return (Domain.ImageSource)GetValue(ImageSourceProperty);
+                return (string)GetValue(ImageSourceProperty);
             }
             set
             {
                 SetValue(ImageSourceProperty, value);
             }
         }
+
         public ImageItem()
         {
             this.InitializeComponent();
-            vm = ViewModels.ImageItemViewModel.Create(ImageSource);
+            vm = ViewModels.ImageItemViewModel.Create(null);
         }
     }
 }
