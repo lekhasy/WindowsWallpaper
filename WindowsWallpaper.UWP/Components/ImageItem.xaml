@@ -8,13 +8,14 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
 
-    <Grid>
-        <Canvas x:Name="canvas1">
-            <Image Stretch="UniformToFill" Source="{Binding Source}" 
-                   Height="{Binding ActualHeight, ElementName=canvas1, Mode=OneWay}" 
-                   Width="{Binding ActualWidth, ElementName=canvas1, Mode=OneWay}"/>
-            <TextBlock  Canvas.ZIndex="1" Text="{Binding Description}"/>
-        </Canvas>
+    <Grid x:Name="grid">
+        <!--<Canvas x:Name="canvas1" Width="{Binding ActualWidth, ElementName=grid, Mode=OneWay}" 
+                Height="{Binding ActualHeight, ElementName=grid, Mode=OneWay}">-->
+            <Image Stretch="Uniform" Source="{Binding Source}" />
+            <!--Height="{Binding ActualHeight, ElementName=canvas1, Mode=OneWay}" 
+                   Width="{Binding ActualWidth, ElementName=canvas1, Mode=OneWay}"-->
+            <TextBlock  Text="{Binding Description}"/>
+        <!--</Canvas>-->
     </Grid>
 
 </UserControl>

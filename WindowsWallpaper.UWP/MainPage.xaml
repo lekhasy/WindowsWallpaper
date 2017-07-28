@@ -8,13 +8,22 @@
     xmlns:cpn = "using:WindowsWallpaper.UWP.Components"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <FlipView ItemsSource="{Binding Images}" x:Name="imageSlider">
-            <FlipView.ItemTemplate>
-                <DataTemplate>
-                    <cpn:ImageItem Height="{Binding ElementName=imgSlider, Path=Height}" DataContext="{Binding}" ImageSourceStr="{Binding Path=str}" ImageSource="{Binding}"></cpn:ImageItem>
-                </DataTemplate>
-            </FlipView.ItemTemplate>
-        </FlipView>
-    </Grid>
+    <Pivot>
+        <PivotItem Header="Photos">
+            <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+                <FlipView ItemsSource="{Binding Images}" x:Name="imageSlider">
+                    <FlipView.ItemTemplate>
+                        <DataTemplate>
+                            <cpn:ImageItem Height="{Binding ElementName=imgSlider, Path=Height}" DataContext="{Binding}" ImageSourceStr="{Binding Path=str}" ImageSource="{Binding}"></cpn:ImageItem>
+                        </DataTemplate>
+                    </FlipView.ItemTemplate>
+                </FlipView>
+            </Grid>
+        </PivotItem>
+        <PivotItem Header="Settings">
+            <TextBlock>
+                Setting tab
+            </TextBlock>
+        </PivotItem>
+    </Pivot>
 </Page>

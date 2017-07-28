@@ -55,7 +55,6 @@ namespace WindowsWallpaper.UWP.Components
         {
             this.InitializeComponent();
             vm = ViewModels.ImageItemViewModel.Create(ImageSource);
-            this.DataContext = vm;
         }
     }
 }
