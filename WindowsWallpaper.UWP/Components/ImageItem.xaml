@@ -8,14 +8,16 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
 
-    <Grid x:Name="grid">
-        <!--<Canvas x:Name="canvas1" Width="{Binding ActualWidth, ElementName=grid, Mode=OneWay}" 
-                Height="{Binding ActualHeight, ElementName=grid, Mode=OneWay}">-->
-            <Image Stretch="Uniform" Source="{Binding Source}" />
-            <!--Height="{Binding ActualHeight, ElementName=canvas1, Mode=OneWay}" 
-                   Width="{Binding ActualWidth, ElementName=canvas1, Mode=OneWay}"-->
-            <TextBlock  Text="{Binding Description}"/>
-        <!--</Canvas>-->
+    <Grid>
+        <RelativePanel>
+            <Image x:Name="img" Stretch="Uniform" 
+                   RelativePanel.AlignHorizontalCenterWithPanel="True"
+                   Source="{Binding Source}" />
+            <TextBlock  Text="{Binding Description}"
+                        RelativePanel.AlignLeftWith="img"
+                        RelativePanel.AlignBottomWith="img"/>
+            
+        </RelativePanel>
     </Grid>
 
 </UserControl>

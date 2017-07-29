@@ -106,10 +106,12 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AppConstants.cs" />
     <Compile Include="IDailyImageSource.cs" />
-    <Compile Include="ILocalstorageProvider.cs" />
+    <Compile Include="Storage\ILocalStorageProvider - Copy.cs" />
+    <Compile Include="Storage\IStorageProvider.cs" />
     <Compile Include="ImageSource.cs" />
-    <Compile Include="LocalStorageKeys.cs" />
+    <Compile Include="Storage\LocalStorageKeys.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\WindowsWallpaper.Domain.rd.xml" />
   </ItemGroup>

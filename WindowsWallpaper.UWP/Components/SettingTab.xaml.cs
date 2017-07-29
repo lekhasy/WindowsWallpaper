@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using WindowsWallpaper.UWP.ViewModels;
 
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
@@ -19,9 +20,12 @@ namespace WindowsWallpaper.UWP.Components
 {
     public sealed partial class SettingTab : UserControl
     {
+        SettingTabViewModel vm;
         public SettingTab()
         {
             this.InitializeComponent();
+            vm = new SettingTabViewModel();
+            this.DataContext = vm;
         }
     }
 }

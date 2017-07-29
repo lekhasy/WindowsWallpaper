@@ -4,16 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Background;
+using WindowsWallpaper.Domain;
 
 namespace WindowsWallpaper.UWP
 {
     public static class RegisterBGTask
     {
-        const string UpdateDailyImageBGTask = "UpdateDailyImageBGTask";
-        const string UpdateDailyImageBGTaskEndPoint = "WindowsWallpaper.BGTask.UpdateImageBgTask";
-        public static void RegisterUpdateDailyImageBGTask()
+        public static void RegisterUpdateDailyBGImageBGTask()
         {
-            Utils.BGTaskRegister.RegisterBGTask(UpdateDailyImageBGTask, UpdateDailyImageBGTaskEndPoint, new TimeTrigger(30, false), new List<SystemConditionType> {SystemConditionType.InternetAvailable});
+            Utils.BGTaskRegister.RegisterBGTask(AppConstants.UpdateDailyImageBGTask, AppConstants.UpdateDailyImageBGTaskEndPoint, new TimeTrigger(30, false), new List<SystemConditionType> {SystemConditionType.InternetAvailable});
         }
     }
 }

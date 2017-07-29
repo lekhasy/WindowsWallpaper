@@ -9,7 +9,7 @@
     mc:Ignorable="d">
 
     <Pivot>
-        <PivotItem Header="Photos">
+        <PivotItem Header="Photos" Margin="0">
             <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
                 <FlipView ItemsSource="{Binding Images}" x:Name="imageSlider">
                     <FlipView.ItemTemplate>
@@ -20,7 +20,7 @@
                 </FlipView>
             </Grid>
         </PivotItem>
-        <PivotItem Header="Settings">
+        <PivotItem Header="Settings" Margin="0">
             <cpn:SettingTab></cpn:SettingTab>
         </PivotItem>
     </Pivot>

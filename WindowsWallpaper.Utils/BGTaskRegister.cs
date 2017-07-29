@@ -32,5 +32,10 @@ namespace WindowsWallpaper.Utils
 
             BackgroundTaskRegistration task = builder.Register();
         }
+
+        public static bool IsBGTaskRegistered(string taskName)
+        {
+            return BackgroundTaskRegistration.AllTasks.Any(t => t.Value.Name == taskName);
+        }
     }
 }
