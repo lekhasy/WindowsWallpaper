@@ -106,7 +106,6 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegisterBGTask.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\ImageItemViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
@@ -160,10 +159,6 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WindowsWallpaper.BGTask\WindowsWallpaper.BGTask.csproj">
-      <Project>{2b51a074-bf37-4baa-b772-26ae0ca27846}</Project>
-      <Name>WindowsWallpaper.BGTask</Name>
-    </ProjectReference>
     <ProjectReference Include="..\WindowsWallpaper.Domain\WindowsWallpaper.Domain.csproj">
       <Project>{01980f14-7690-4c45-8e62-4b3fb56c0107}</Project>
       <Name>WindowsWallpaper.Domain</Name>
@@ -172,9 +167,9 @@
       <Project>{fe059241-b431-4e7d-8036-747e008853ab}</Project>
       <Name>WindowsWallpaper.ImageSource</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WindowsWallpaper.Storage\WindowsWallpaper.Storage.csproj">
-      <Project>{216cd5ea-ffc0-4117-a966-68d24eeaa1bc}</Project>
-      <Name>WindowsWallpaper.Storage</Name>
+    <ProjectReference Include="..\WindowsWallpaper.Proxy\WindowsWallpaper.Proxy.csproj">
+      <Project>{3d9d6bea-6c7f-4761-83e2-c5f9b08444df}</Project>
+      <Name>WindowsWallpaper.Proxy</Name>
     </ProjectReference>
     <ProjectReference Include="..\WindowsWallpaper.Utils\WindowsWallpaper.Utils.csproj">
       <Project>{221c3b5f-d754-46df-9d02-fe37440e0b55}</Project>

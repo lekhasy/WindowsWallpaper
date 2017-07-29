@@ -8,7 +8,6 @@ namespace WindowsWallpaper.Domain
 {
     public static class AppConstants
     {
-        public const string UpdateDailyImageBGTask = "UpdateDailyImageBGTask";
-        public const string UpdateDailyImageBGTaskEndPoint = "WindowsWallpaper.BGTask.UpdateImageBgTask";
+        
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Background;
 
-namespace WindowsWallpaper.BGTask
+namespace WindowsWallpaper.BGTaskEntries
 {
     public sealed class UpdateImageBgTask : IBackgroundTask
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
-using WindowsWallpaper.Domain.Storage;
+using WindowsWallpaper.Domain.Providers.Storage;
 
 namespace WindowsWallpaper.Storage
 {

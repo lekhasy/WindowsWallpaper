@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WindowsWallpaper.Domain;
-using WindowsWallpaper.Domain.Storage;
-using WindowsWallpaper.Storage;
+using WindowsWallpaper.Domain.Providers.BGTask;
+using WindowsWallpaper.Domain.Proxy;
+using WindowsWallpaper.Proxy;
 
 namespace WindowsWallpaper.UWP.ViewModels
 {
@@ -22,7 +23,7 @@ namespace WindowsWallpaper.UWP.ViewModels
                     Dictionary<int, int> d = new Dictionary<int, int>();
                     _autoUpdateBackgroundState = value;
                     NotifyPropertyChanged();
-                    UpdateBGStateAsync(value);
+                    UpdateBGStateAsync(value).Wait();
                 }
             }
         }
@@ -87,33 +88,25 @@ namespace WindowsWallpaper.UWP.ViewModels
             }
         }
 
-        IStorageProvider storageProvider = new LocalSettingStorageProvider();
-
         public async Task InitDataAsync()
         {
             InitingData = true;
-            AutoUpdateBackgroundState = Utils.BGTaskRegister.IsBGTaskRegistered(AppConstants.UpdateDailyImageBGTask);
+            AutoUpdateBackgroundState = _BGTaskProxy.CheckBGTaskRegistered(BGTaskKey.UpdateDailyImageBGTask);
             InitingData = false;
             await Task.FromResult(0);
         }
 
-        private Task UpdateBGStateAsync(bool enable)
+        IUserPreferencesProxy _UserPreferencesProxy = UserPreferencesProxy.Create();
+        IBGTaskProxy _BGTaskProxy = BGTaskProxy.Create();
+
+
+        private async Task UpdateBGStateAsync(bool enable)
         {
             UpdatingAutoUpdateBackgroundState = true;
-
-            var bgTaskRegisterd = Utils.BGTaskRegister.IsBGTaskRegistered(AppConstants.UpdateDailyImageBGTask);
-
-            if (!enable && bgTaskRegisterd) // turn on
-            {
-                
-            }
-            else if(enable && !bgTaskRegisterd) // turn off
-            {
-                
-            }
-
+            
+            
             UpdatingAutoUpdateBackgroundState = false;
-            return Task.FromResult(0);
+            
         }
     }
 }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WindowsWallpaper.Proxy
+namespace WindowsWallpaper.Domain
 {
-    public class Class1
+    class IBackgroundTaskProvider
     {
     }
 }

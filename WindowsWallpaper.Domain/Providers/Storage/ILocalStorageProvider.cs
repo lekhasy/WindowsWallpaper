@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WindowsWallpaper.Domain.Storage
+namespace WindowsWallpaper.Domain.Providers.Storage
 {
     public interface ILocalStorageProvider : IStorageProvider
     { 
-    
+        
     }
 }
