@@ -8,7 +8,7 @@ using WindowsWallpaper.Domain;
 
 namespace WindowsWallpaper.UWP
 {
-    public static class RegisterBGTask
+    public static class WindowsWallpaperBGTaskRegister
     {
         public static void RegisterUpdateDailyBGImageBGTask()
         {

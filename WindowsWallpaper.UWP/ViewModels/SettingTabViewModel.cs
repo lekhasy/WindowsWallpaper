@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WindowsWallpaper.Domain;
 using WindowsWallpaper.Domain.Storage;
 using WindowsWallpaper.Storage;
 
@@ -21,7 +22,7 @@ namespace WindowsWallpaper.UWP.ViewModels
                     Dictionary<int, int> d = new Dictionary<int, int>();
                     _autoUpdateBackgroundState = value;
                     NotifyPropertyChanged();
-                    UpdateBGState();
+                    UpdateBGStateAsync(value);
                 }
             }
         }
@@ -91,17 +92,28 @@ namespace WindowsWallpaper.UWP.ViewModels
         public async Task InitDataAsync()
         {
             InitingData = true;
-            AutoUpdateBackgroundState = Utils.BGTaskRegister.IsBGTaskRegistered()
+            AutoUpdateBackgroundState = Utils.BGTaskRegister.IsBGTaskRegistered(AppConstants.UpdateDailyImageBGTask);
             InitingData = false;
+            await Task.FromResult(0);
         }
 
-        private async Task UpdateBGStateAsync()
+        private Task UpdateBGStateAsync(bool enable)
         {
             UpdatingAutoUpdateBackgroundState = true;
 
+            var bgTaskRegisterd = Utils.BGTaskRegister.IsBGTaskRegistered(AppConstants.UpdateDailyImageBGTask);
 
+            if (!enable && bgTaskRegisterd) // turn on
+            {
+                
+            }
+            else if(enable && !bgTaskRegisterd) // turn off
+            {
+                
+            }
 
             UpdatingAutoUpdateBackgroundState = false;
+            return Task.FromResult(0);
         }
     }
 }
