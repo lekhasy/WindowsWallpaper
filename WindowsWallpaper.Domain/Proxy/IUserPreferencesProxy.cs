@@ -10,7 +10,7 @@ namespace WindowsWallpaper.Domain.Proxy
     public interface IUserPreferencesProxy
     {
         Task<bool> GetAutoUpdateBGImageAsync(bool defaultValue);
-        Task SetAutpUpdateImageAsync(bool value);
+        Task SetAutoUpdateImageAsync(bool value);
 
         Task<bool> GetAutoUpdateLockScreenImageAsync(bool defaultValue);
         Task SetAutoUpdateLockScreenImageAsync(bool value);

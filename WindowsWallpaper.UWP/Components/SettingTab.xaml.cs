@@ -27,5 +27,10 @@ namespace WindowsWallpaper.UWP.Components
             vm = new SettingTabViewModel();
             this.DataContext = vm;
         }
+
+        private async void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            await vm.ReloadDataAsync();
+        }
     }
 }

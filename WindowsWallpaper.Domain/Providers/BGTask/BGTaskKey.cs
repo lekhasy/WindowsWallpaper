@@ -15,7 +15,7 @@ namespace WindowsWallpaper.Domain.Providers.BGTask
     {
 
         public const string UpdateDailyImageBGTaskName = "UpdateDailyImageBGTask";
-        public const string UpdateDailyImageBGTaskEndPoint = "WindowsWallpaper.BGTask.UpdateImageBgTask";
+        public const string UpdateDailyImageBGTaskEndPoint = "WindowsWallpaper.BGTaskEntries.UpdateImageBgTask";
 
         public static string GetTaskName(this BGTaskKey key)
         {

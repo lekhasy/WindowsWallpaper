@@ -8,9 +8,9 @@ namespace WindowsWallpaper.UWP.ViewModels
 {
     public class ImageItemViewModel : BaseViewModel
     {
-        private Domain.ImageSource _source;
+        private Domain.Entities.ImageSource _source;
 
-        public Domain.ImageSource SourceImg
+        public Domain.Entities.ImageSource SourceImg
         {
             get { return _source; }
             set
@@ -23,12 +23,12 @@ namespace WindowsWallpaper.UWP.ViewModels
             }
         }
 
-        private ImageItemViewModel(Domain.ImageSource source)
+        private ImageItemViewModel(Domain.Entities.ImageSource source)
         {
             SourceImg = source;
         }
 
-        public static ImageItemViewModel Create(Domain.ImageSource source)
+        public static ImageItemViewModel Create(Domain.Entities.ImageSource source)
         {
             return new ImageItemViewModel(source);
         }

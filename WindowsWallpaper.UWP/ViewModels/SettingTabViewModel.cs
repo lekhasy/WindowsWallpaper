@@ -20,7 +20,6 @@ namespace WindowsWallpaper.UWP.ViewModels
             {
                 if (_autoUpdateBackgroundState != value)
                 {
-                    Dictionary<int, int> d = new Dictionary<int, int>();
                     _autoUpdateBackgroundState = value;
                     NotifyPropertyChanged();
                     UpdateBGStateAsync(value).Wait();
@@ -39,6 +38,7 @@ namespace WindowsWallpaper.UWP.ViewModels
                     Dictionary<int, int> d = new Dictionary<int, int>();
                     _autoUpdateLockScreenState = value;
                     NotifyPropertyChanged();
+                    UpdateLockScreenStateAsync(value).Wait();
                 }
             }
         }
@@ -73,7 +73,7 @@ namespace WindowsWallpaper.UWP.ViewModels
             }
         }
 
-        private bool _initTingData = false;
+        private bool _initTingData = true;
         public bool InitingData
         {
             get { return _initTingData; }
@@ -81,32 +81,38 @@ namespace WindowsWallpaper.UWP.ViewModels
             {
                 if (_initTingData != value)
                 {
-                    Dictionary<int, int> d = new Dictionary<int, int>();
                     _initTingData = value;
                     NotifyPropertyChanged();
                 }
             }
         }
 
-        public async Task InitDataAsync()
+        public async Task ReloadDataAsync()
         {
             InitingData = true;
-            AutoUpdateBackgroundState = _BGTaskProxy.CheckBGTaskRegistered(BGTaskKey.UpdateDailyImageBGTask);
+            AutoUpdateBackgroundState  = await _UserPreferencesProxy.GetAutoUpdateBGImageAsync(false);
+            AutoUpdateLockScreenState = await _UserPreferencesProxy.GetAutoUpdateLockScreenImageAsync(false);
             InitingData = false;
-            await Task.FromResult(0);
         }
 
         IUserPreferencesProxy _UserPreferencesProxy = UserPreferencesProxy.Create();
-        IBGTaskProxy _BGTaskProxy = BGTaskProxy.Create();
-
 
         private async Task UpdateBGStateAsync(bool enable)
         {
             UpdatingAutoUpdateBackgroundState = true;
-            
+
+            await _UserPreferencesProxy.SetAutoUpdateImageAsync(enable);
             
             UpdatingAutoUpdateBackgroundState = false;
-            
+        }
+        
+        private async Task UpdateLockScreenStateAsync(bool enable)
+        {
+            UpdatingAutoUpdateLockScreenState = true;
+
+            await _UserPreferencesProxy.SetAutoUpdateLockScreenImageAsync(enable);
+
+            UpdatingAutoUpdateLockScreenState = false;
         }
     }
 }

@@ -7,14 +7,15 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     d:DesignHeight="300"
+    Loaded="UserControl_Loaded"
     d:DesignWidth="400">
 
     <Grid>
         <RelativePanel>
             <TextBlock Text="Auto update Background Photo: " x:Name="tbl_bg" Margin="8"/>
-            <ToggleSwitch x:Name="swt_bg" RelativePanel.RightOf="tbl_bg" Width="100" MinWidth="80" />
+            <ToggleSwitch IsOn="{Binding AutoUpdateBackgroundState, Mode=TwoWay}" x:Name="swt_bg" RelativePanel.RightOf="tbl_bg" Width="100" MinWidth="80"/>
             <TextBlock Text="Auto update Lock Screen Photo:" x:Name="tbl_lock" RelativePanel.Below="tbl_bg" Margin="8"/>
-            <ToggleSwitch x:Name="swt_lock" RelativePanel.RightOf="tbl_lock" RelativePanel.AlignTopWith="tbl_lock" Width="100" MinWidth="80"/>
+            <ToggleSwitch x:Name="swt_lock" IsOn="{Binding AutoUpdateLockScreenState, Mode=TwoWay}" RelativePanel.RightOf="tbl_lock" RelativePanel.AlignTopWith="tbl_lock" Width="100" MinWidth="80"/>
             <ProgressRing RelativePanel.AlignTopWith="tbl_bg" RelativePanel.RightOf="swt_bg" Margin="12"/>
             <ProgressRing RelativePanel.AlignTopWith="tbl_lock" RelativePanel.RightOf="swt_bg" Margin="12"/>
         </RelativePanel>

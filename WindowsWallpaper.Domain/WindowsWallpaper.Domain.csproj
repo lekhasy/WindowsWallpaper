@@ -111,7 +111,6 @@
     <Compile Include="IDailyImageSource.cs" />
     <Compile Include="Providers\BGTask\BGTaskKey.cs" />
     <Compile Include="Providers\BGTask\IBGTaskProvider.cs" />
-    <Compile Include="Proxy\IBGTaskProxy.cs" />
     <Compile Include="Proxy\IUserPreferencesProxy.cs" />
     <Compile Include="Providers\Storage\ILocalStorageProvider.cs" />
     <Compile Include="Providers\Storage\IStorageProvider.cs" />

@@ -9,7 +9,7 @@ namespace WindowsWallpaper.Domain.Providers.BGTask
 {
     public interface IBGTaskProvider
     {
-        void RegisterBGTask(BGTaskKey key, IBackgroundTrigger triggers, IEnumerable<SystemConditionType> condition);
+        void RegisterBGTask(BGTaskKey key, IBackgroundTrigger trigger, IEnumerable<SystemConditionType> condition);
         void UnRegisterBGTask(BGTaskKey key, bool cancelTask);
         bool IsBGTaskRegistered(BGTaskKey key);
     }

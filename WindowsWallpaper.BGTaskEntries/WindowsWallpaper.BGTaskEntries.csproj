@@ -115,6 +115,20 @@
       <Version>5.2.3</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WindowsWallpaper.Domain\WindowsWallpaper.Domain.csproj">
+      <Project>{01980f14-7690-4c45-8e62-4b3fb56c0107}</Project>
+      <Name>WindowsWallpaper.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WindowsWallpaper.Proxy\WindowsWallpaper.Proxy.csproj">
+      <Project>{3d9d6bea-6c7f-4761-83e2-c5f9b08444df}</Project>
+      <Name>WindowsWallpaper.Proxy</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WindowsWallpaper.Storage\WindowsWallpaper.Storage.csproj">
+      <Project>{216cd5ea-ffc0-4117-a966-68d24eeaa1bc}</Project>
+      <Name>WindowsWallpaper.Storage</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

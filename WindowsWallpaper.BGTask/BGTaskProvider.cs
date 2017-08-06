@@ -10,7 +10,7 @@ namespace WindowsWallpaper.BGTask
 {
     public class BGTaskProvider : IBGTaskProvider
     {
-        public void RegisterBGTask(BGTaskKey key, IBackgroundTrigger triggers, IEnumerable<SystemConditionType> condition)
+        public void RegisterBGTask(BGTaskKey key, IBackgroundTrigger trigger, IEnumerable<SystemConditionType> condition)
         {
             var taskRegistered = false;
 
@@ -29,7 +29,7 @@ namespace WindowsWallpaper.BGTask
                 TaskEntryPoint = key.GetTaskEnty()
             };
 
-            builder.SetTrigger(new TimeTrigger(30, false));
+            builder.SetTrigger(trigger);
             foreach (var con in condition)
                 builder.AddCondition(new SystemCondition(con));
 

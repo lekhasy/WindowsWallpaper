@@ -10,13 +10,25 @@
 
     <Grid>
         <RelativePanel>
-            <Image x:Name="img" Stretch="Uniform" 
+            <Image x:Name="img" Stretch="Uniform"
+                   RelativePanel.AlignVerticalCenterWithPanel="True"
                    RelativePanel.AlignHorizontalCenterWithPanel="True"
                    Source="{Binding Source}" />
-            <TextBlock  Text="{Binding Description}"
+            <TextBlock Foreground="White" Text="{Binding Description}"
                         RelativePanel.AlignLeftWith="img"
                         RelativePanel.AlignBottomWith="img"/>
-            
+            <Border RelativePanel.AlignHorizontalCenterWithPanel="True"
+                       RelativePanel.AlignVerticalCenterWithPanel="True"
+                       Width="{Binding ElementName=buttonStack, Path=ActualWidth}"
+                       Height="{Binding ElementName=buttonStack, Path=ActualHeight}"
+                       CornerRadius="5">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel.Background>
+                        <ImageBrush Stretch="Fill"/>
+                    </StackPanel.Background>
+                </StackPanel>
+            </Border>
+
         </RelativePanel>
     </Grid>
 
