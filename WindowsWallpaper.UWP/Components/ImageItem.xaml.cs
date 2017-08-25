@@ -39,7 +39,12 @@ namespace WindowsWallpaper.UWP.Components
         public ImageItem()
         {
             this.InitializeComponent();
-            vm = ViewModels.ImageItemViewModel.Create(ImageSource);
+        }
+
+        private void UserControl_Loading(FrameworkElement sender, object args)
+        {
+             vm = ViewModels.ImageItemViewModel.Create(ImageSource);
+            this.DataContext = vm;
         }
     }
 }

@@ -8,5 +8,6 @@ namespace WindowsWallpaper.Domain.Entities
     {
         public Uri Source { get; set; }
         public string Description { get; set; }
+
     }
 }

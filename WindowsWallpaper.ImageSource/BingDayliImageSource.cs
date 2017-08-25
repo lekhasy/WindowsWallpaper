@@ -11,7 +11,7 @@ namespace WindowsWallpaper.ImageSource
 {
     public class BingDailyImageSource : IDailyImageSource
     {
-        public async Task<IEnumerable<Domain.ImageSource>> GetTodayImageSourceAsync()
+        public async Task<IEnumerable<Domain.Entities.ImageSource>> GetTodayImageSourceAsync()
         {
             // We can specify the region we want for the Bing Image of the Day.
             string strRegion = "en-US";
@@ -31,7 +31,7 @@ namespace WindowsWallpaper.ImageSource
             strJSONString = await response.Content.ReadAsStringAsync();
 
             var strs = JsonConvert.DeserializeObject<BingImageSourceResult>(strJSONString);
-            var uris = strs.images.Select(s => new Domain.ImageSource { Source = new Uri("https://www.bing.com" + s.url), Description = s.copyright });
+            var uris = strs.images.Select(s => new Domain.Entities.ImageSource { Source = new Uri("https://www.bing.com" + s.url), Description = s.copyright });
             return uris;
         }
     }

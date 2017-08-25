@@ -6,6 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     d:DesignHeight="300"
+    Loading="UserControl_Loading"
     d:DesignWidth="400">
 
     <Grid>
@@ -13,22 +14,11 @@
             <Image x:Name="img" Stretch="Uniform"
                    RelativePanel.AlignVerticalCenterWithPanel="True"
                    RelativePanel.AlignHorizontalCenterWithPanel="True"
-                   Source="{Binding Source}" />
-            <TextBlock Foreground="White" Text="{Binding Description}"
+                   Source="{Binding SourceImg.Source}">
+            </Image>
+            <TextBlock Foreground="White" Text="{Binding SourceImg.Description}"
                         RelativePanel.AlignLeftWith="img"
                         RelativePanel.AlignBottomWith="img"/>
-            <Border RelativePanel.AlignHorizontalCenterWithPanel="True"
-                       RelativePanel.AlignVerticalCenterWithPanel="True"
-                       Width="{Binding ElementName=buttonStack, Path=ActualWidth}"
-                       Height="{Binding ElementName=buttonStack, Path=ActualHeight}"
-                       CornerRadius="5">
-                <StackPanel Orientation="Horizontal">
-                    <StackPanel.Background>
-                        <ImageBrush Stretch="Fill"/>
-                    </StackPanel.Background>
-                </StackPanel>
-            </Border>
-
         </RelativePanel>
     </Grid>
 

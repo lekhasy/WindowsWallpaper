@@ -44,5 +44,17 @@ namespace WindowsWallpaper.UWP
                 await dialog.ShowAsync();
             }
         }
+
+        private void ImageItem_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            cmdBar.IsOpen = !cmdBar.IsOpen;
+        }
+
+        private async void AppBarButton_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            await vm.DownloadCurrentImage();
+            MessageDialog d = new MessageDialog("Done");
+            await d.ShowAsync();
+        }
     }
 }

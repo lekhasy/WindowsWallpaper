@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using WindowsWallpaper.Domain.Entities;
 
 namespace WindowsWallpaper.Domain
 {
