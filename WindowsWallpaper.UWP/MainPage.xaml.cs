@@ -53,7 +53,7 @@ namespace WindowsWallpaper.UWP
         private async void AppBarButton_Tapped(object sender, TappedRoutedEventArgs e)
         {
             await vm.DownloadCurrentImage();
-            MessageDialog d = new MessageDialog("Download completed");
+            MessageDialog d = new MessageDialog("Download completed\nFile saved in your picture liblary");
             await d.ShowAsync();
         }
 

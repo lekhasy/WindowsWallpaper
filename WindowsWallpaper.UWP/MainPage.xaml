@@ -17,7 +17,6 @@
                         <DataTemplate>
                             <Grid>
                                 <cpn:ImageItem Tapped="ImageItem_Tapped" Height="{Binding ElementName=imgSlider, Path=Height}"></cpn:ImageItem>
-                                <TextBlock Text="{Binding Description}"></TextBlock>
                             </Grid>
                             
                         </DataTemplate>

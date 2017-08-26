@@ -117,7 +117,7 @@
     <Compile Include="Proxy\IUserPreferencesProxy.cs" />
     <Compile Include="Providers\Storage\ILocalStorageProvider.cs" />
     <Compile Include="Providers\Storage\IStorageProvider.cs" />
-    <Compile Include="Entities\ImageSource.cs" />
+    <Compile Include="Entities\WwImageSource.cs" />
     <Compile Include="Providers\Storage\LocalStorageKeys.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\WindowsWallpaper.Domain.rd.xml" />

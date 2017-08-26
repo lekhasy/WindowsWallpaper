@@ -28,7 +28,7 @@ namespace WindowsWallpaper.Proxy
 
         public Task<bool> GetAutoUpdateBGImageAsync(bool defaultValue)
         {
-            return _LocalStorageProvider.TryGetAsync(StorageKeys.AutoUpdateBackgroundImage, out defaultValue);
+            return _LocalStorageProvider.GetAsync(StorageKeys.AutoUpdateBackgroundImage, defaultValue);
         }
 
         public async Task SetAutoUpdateImageAsync(bool value)
@@ -50,11 +50,11 @@ namespace WindowsWallpaper.Proxy
 
         private async Task EnsureBGTaskSetProperlyAsync()
         {
-            var bgstate = await GetAutoUpdateLockScreenImageAsync(false);
+            var bgstate = await GetAutoUpdateBGImageAsync(false);
             var lockscreenState = await GetAutoUpdateLockScreenImageAsync(false);
 
             if (bgstate || lockscreenState)
-                _BGTaskprovider.RegisterBGTask(BGTaskKey.UpdateDailyImageBGTask, new TimeTrigger(30, false), new List<SystemConditionType> { SystemConditionType.InternetAvailable });
+                _BGTaskprovider.RegisterBGTask(BGTaskKey.UpdateDailyImageBGTask, new TimeTrigger(15, false), new List<SystemConditionType> { SystemConditionType.InternetAvailable });
             else
                 _BGTaskprovider.UnRegisterBGTask(BGTaskKey.UpdateDailyImageBGTask, false);
         }

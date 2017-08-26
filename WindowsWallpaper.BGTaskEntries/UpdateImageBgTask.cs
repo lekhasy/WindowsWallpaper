@@ -12,8 +12,21 @@ namespace WindowsWallpaper.BGTaskEntries
         public async void Run(IBackgroundTaskInstance taskInstance)
         {
             BackgroundTaskDeferral defferal = taskInstance.GetDeferral();
-            
-            
+
+            Domain.Proxy.IUserPreferencesProxy userPreference = Proxy.UserPreferencesProxy.Create();
+            Domain.Proxy.IImageSourceProxy imgProxy = new Proxy.ImageSourceProxy();
+
+            if (await userPreference.GetAutoUpdateBGImageAsync(false))
+            {
+                var bgcreenImage = await imgProxy.GetLockScreenImageAsync();
+                await Utils.WallPaperImageSetter.SetBackGroundImageAsync(bgcreenImage.Source);
+            }
+
+            if(await userPreference.GetAutoUpdateLockScreenImageAsync(false))
+            {
+                var lockscreenImage = await imgProxy.GetLockScreenImageAsync();
+                await Utils.WallPaperImageSetter.SetLockScreenImageAsync(lockscreenImage.Source);
+            }
 
             defferal.Complete();
         }

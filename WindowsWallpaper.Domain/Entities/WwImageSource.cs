@@ -4,7 +4,7 @@ using System.Text;
 
 namespace WindowsWallpaper.Domain.Entities
 {
-    public class ImageSource
+    public class WwImageSource
     {
         public Uri Source { get; set; }
         public string Description { get; set; }

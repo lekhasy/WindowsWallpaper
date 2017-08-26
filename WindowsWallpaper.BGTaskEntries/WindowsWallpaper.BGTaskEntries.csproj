@@ -128,6 +128,10 @@
       <Project>{216cd5ea-ffc0-4117-a966-68d24eeaa1bc}</Project>
       <Name>WindowsWallpaper.Storage</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WindowsWallpaper.Utils\WindowsWallpaper.Utils.csproj">
+      <Project>{221c3b5f-d754-46df-9d02-fe37440e0b55}</Project>
+      <Name>WindowsWallpaper.Utils</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

@@ -8,6 +8,6 @@ namespace WindowsWallpaper.Domain
 {
     public interface IDailyImageSource
     {
-        Task<IEnumerable<ImageSource>> GetTodayImageSourceAsync();
+        Task<IEnumerable<WwImageSource>> GetTodayImageSourceAsync();
     }
 }

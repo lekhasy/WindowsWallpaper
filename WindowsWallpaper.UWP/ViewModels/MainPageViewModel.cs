@@ -9,14 +9,17 @@ using System.Threading.Tasks;
 using Windows.Networking.BackgroundTransfer;
 using Windows.Storage;
 using Windows.System.UserProfile;
+using WindowsWallpaper.Domain;
+using WindowsWallpaper.Domain.Proxy;
+using WindowsWallpaper.Proxy;
 
 namespace WindowsWallpaper.UWP.ViewModels
 {
     public class MainPageViewModel : BaseViewModel
     {
-        ICollection<Domain.Entities.ImageSource> _images = new ObservableCollection<Domain.Entities.ImageSource>();
+        ICollection<Domain.Entities.WwImageSource> _images = new ObservableCollection<Domain.Entities.WwImageSource>();
 
-        public ICollection<Domain.Entities.ImageSource> Images
+        public ICollection<Domain.Entities.WwImageSource> Images
         {
             get { return _images; }
             set
@@ -29,9 +32,9 @@ namespace WindowsWallpaper.UWP.ViewModels
             }
         }
 
-        private Domain.Entities.ImageSource _selectedImage;
+        private Domain.Entities.WwImageSource _selectedImage;
 
-        public Domain.Entities.ImageSource SelectedImage
+        public Domain.Entities.WwImageSource SelectedImage
         {
             get { return _selectedImage; }
             set
@@ -62,7 +65,7 @@ namespace WindowsWallpaper.UWP.ViewModels
 
         public async Task InitDataAsync()
         {
-            ImageSource.BingDailyImageSource source = new ImageSource.BingDailyImageSource();
+            IDailyImageSource source = new ImageSource.BingDailyImageSource();
             Images = (await source.GetTodayImageSourceAsync()).ToList();
         }
 
@@ -84,45 +87,22 @@ namespace WindowsWallpaper.UWP.ViewModels
             }
         }
 
+         IUserPreferencesProxy _UserPreferencesProxy = UserPreferencesProxy.Create();
+
         public async Task<bool> SetAsBackGround()
         {
-            var filename = Guid.NewGuid().ToString();
-            filename += SelectedImage.Source.AbsolutePath.Substring(SelectedImage.Source.AbsolutePath.LastIndexOf('.'));
-            var folder = await ApplicationData.Current.LocalFolder.CreateFolderAsync("lock", CreationCollisionOption.OpenIfExists);
-            StorageFile file = await folder.CreateFileAsync(filename, CreationCollisionOption.GenerateUniqueName);
-            BackgroundDownloader backgroundDownloader = new BackgroundDownloader();
-            DownloadOperation operation = backgroundDownloader.CreateDownload(SelectedImage.Source, file);
-            await operation.StartAsync();
-            var result = await UserProfilePersonalizationSettings.Current.TrySetWallpaperImageAsync(file);
-            await EnsureNewFolder(folder, filename);
-            return result;
+            var settingresult = await Utils.WallPaperImageSetter.SetBackGroundImageAsync(SelectedImage.Source);
+            if(settingresult)
+            await _UserPreferencesProxy.SetAutoUpdateImageAsync(false);
+            return settingresult;
         }
 
         public async Task<bool> SetAsLockScreen()
         {
-            var filename = Guid.NewGuid().ToString();
-            var folder = await ApplicationData.Current.LocalFolder.CreateFolderAsync("lock", CreationCollisionOption.OpenIfExists);
-            filename += SelectedImage.Source.AbsolutePath.Substring(SelectedImage.Source.AbsolutePath.LastIndexOf('.'));
-            StorageFile file = await folder.CreateFileAsync(filename, CreationCollisionOption.GenerateUniqueName);
-            BackgroundDownloader backgroundDownloader = new BackgroundDownloader();
-            DownloadOperation operation = backgroundDownloader.CreateDownload(SelectedImage.Source, file);
-            await operation.StartAsync();
-            var result = await UserProfilePersonalizationSettings.Current.TrySetLockScreenImageAsync(file);
-            await EnsureNewFolder(folder, filename);
-            return result;
-        }
-
-        public async Task<StorageFolder> EnsureNewFolder(StorageFolder folder, string filename)
-        {
-            var files = await folder.GetFilesAsync(Windows.Storage.Search.CommonFileQuery.DefaultQuery);
-            foreach (var item in files)
-            {
-                if (!item.Name.Contains(filename))
-                {
-                    await item.DeleteAsync(StorageDeleteOption.PermanentDelete);
-                }
-            }
-            return folder;
+            var settingResult = await Utils.WallPaperImageSetter.SetLockScreenImageAsync(SelectedImage.Source);
+            if (settingResult)
+                await _UserPreferencesProxy.SetAutoUpdateLockScreenImageAsync(false);
+            return settingResult;
         }
     }
 }

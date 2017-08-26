@@ -125,6 +125,10 @@
       <Project>{01980f14-7690-4c45-8e62-4b3fb56c0107}</Project>
       <Name>WindowsWallpaper.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WindowsWallpaper.ImageSource\WindowsWallpaper.ImageSource.csproj">
+      <Project>{fe059241-b431-4e7d-8036-747e008853ab}</Project>
+      <Name>WindowsWallpaper.ImageSource</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WindowsWallpaper.Storage\WindowsWallpaper.Storage.csproj">
       <Project>{216cd5ea-ffc0-4117-a966-68d24eeaa1bc}</Project>
       <Name>WindowsWallpaper.Storage</Name>

@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Windows.UI.Xaml.Media;
+using WindowsWallpaper.Domain.Entities;
 
 namespace WindowsWallpaper.Domain.Proxy
 {
     public interface IImageSourceProxy
     {
-        IEnumerable<ImageSource> GetImages();
+        Task<IEnumerable<WwImageSource>> GetImagesAsync();
+
+        Task<WwImageSource> GetLockScreenImageAsync();
+        Task<WwImageSource> GetBackgroundImageAsync();
+
     }
 }
