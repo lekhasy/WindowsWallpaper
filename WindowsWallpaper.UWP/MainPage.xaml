@@ -14,8 +14,12 @@
             <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
                 <FlipView ItemsSource="{Binding Images}" x:Name="imageSlider" SelectedItem="{Binding SelectedImage, Mode=TwoWay}" SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}">
                     <FlipView.ItemTemplate>
-                        <DataTemplate x:DataType="cpnvm:ImageItemViewModel">
-                            <cpn:ImageItem Tapped="ImageItem_Tapped" ImageSource="{Binding}" Height="{Binding ElementName=imgSlider, Path=Height}"></cpn:ImageItem>
+                        <DataTemplate>
+                            <Grid>
+                                <cpn:ImageItem Tapped="ImageItem_Tapped" Height="{Binding ElementName=imgSlider, Path=Height}"></cpn:ImageItem>
+                                <TextBlock Text="{Binding Description}"></TextBlock>
+                            </Grid>
+                            
                         </DataTemplate>
                     </FlipView.ItemTemplate>
                 </FlipView>

@@ -6,7 +6,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     d:DesignHeight="300"
-    DataContextChanged="UserControl_DataContextChanged"
     d:DesignWidth="400">
 
     <Grid>
@@ -14,9 +13,9 @@
             <Image x:Name="img" Stretch="Uniform"
                    RelativePanel.AlignVerticalCenterWithPanel="True"
                    RelativePanel.AlignHorizontalCenterWithPanel="True"
-                   Source="{Binding SourceImg.Source}">
+                   Source="{Binding Source}">
             </Image>
-            <TextBlock Foreground="White" Text="{Binding SourceImg.Description}"
+            <TextBlock Foreground="White" Text="{Binding Description}"
                         RelativePanel.AlignLeftWith="img"
                         RelativePanel.AlignBottomWith="img"/>
         </RelativePanel>
