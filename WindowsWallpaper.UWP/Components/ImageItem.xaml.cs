@@ -39,12 +39,15 @@ namespace WindowsWallpaper.UWP.Components
         public ImageItem()
         {
             this.InitializeComponent();
+            vm = ViewModels.ImageItemViewModel.Create(null);
         }
 
-        private void UserControl_Loading(FrameworkElement sender, object args)
+        private void UserControl_DataContextChanged(FrameworkElement sender, DataContextChangedEventArgs args)
         {
-             vm = ViewModels.ImageItemViewModel.Create(ImageSource);
-            this.DataContext = vm;
+            if (this.DataContext is Domain.Entities.ImageSource)
+            {
+                this.DataContext = ViewModels.ImageItemViewModel.Create(this.DataContext as Domain.Entities.ImageSource);
+            }
         }
     }
 }

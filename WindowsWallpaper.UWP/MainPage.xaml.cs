@@ -53,8 +53,30 @@ namespace WindowsWallpaper.UWP
         private async void AppBarButton_Tapped(object sender, TappedRoutedEventArgs e)
         {
             await vm.DownloadCurrentImage();
-            MessageDialog d = new MessageDialog("Done");
+            MessageDialog d = new MessageDialog("Download completed");
             await d.ShowAsync();
+        }
+
+        private void Pivot_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (pivot.SelectedIndex == 0)
+            {
+                cmdBar.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                cmdBar.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private async void AppBarButtonBG_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            await vm.SetAsBackGround();
+        }
+
+        private async void AppBarButtonLock_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            await vm.SetAsLockScreen();
         }
     }
 }

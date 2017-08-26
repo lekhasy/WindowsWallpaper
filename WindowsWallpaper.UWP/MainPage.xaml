@@ -9,10 +9,10 @@
     xmlns:cpnvm ="using:WindowsWallpaper.UWP.ViewModels"
     mc:Ignorable="d">
 
-    <Pivot>
+    <Pivot Name="pivot" SelectionChanged="Pivot_SelectionChanged">
         <PivotItem Header="Photos" Margin="0">
             <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-                <FlipView ItemsSource="{Binding Images}" x:Name="imageSlider" SelectedItem="{Binding SelectedImage, Mode=TwoWay}">
+                <FlipView ItemsSource="{Binding Images}" x:Name="imageSlider" SelectedItem="{Binding SelectedImage, Mode=TwoWay}" SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}">
                     <FlipView.ItemTemplate>
                         <DataTemplate x:DataType="cpnvm:ImageItemViewModel">
                             <cpn:ImageItem Tapped="ImageItem_Tapped" ImageSource="{Binding}" Height="{Binding ElementName=imgSlider, Path=Height}"></cpn:ImageItem>
@@ -22,14 +22,14 @@
             </Grid>
         </PivotItem>
         <PivotItem Header="Settings" Margin="0">
-            <!--<cpn:SettingTab></cpn:SettingTab>-->
+            <cpn:SettingTab></cpn:SettingTab>
         </PivotItem>
     </Pivot>
     <Page.BottomAppBar>
         <CommandBar ClosedDisplayMode="Compact" Name="cmdBar">
             <AppBarButton Label="Download" Icon="Download" Tapped="AppBarButton_Tapped"></AppBarButton>
-            <AppBarButton Label="Set as background" Icon="GoToStart"></AppBarButton>
-            <AppBarButton Label="Set as lockscreen" Icon="SetLockScreen"></AppBarButton>
+            <AppBarButton Label="Set as background" Icon="GoToStart" Tapped="AppBarButtonBG_Tapped"></AppBarButton>
+            <AppBarButton Label="Set as lockscreen" Icon="SetLockScreen" Tapped="AppBarButtonLock_Tapped"></AppBarButton>
         </CommandBar>
     </Page.BottomAppBar>
 </Page>

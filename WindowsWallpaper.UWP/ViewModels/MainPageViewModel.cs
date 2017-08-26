@@ -44,6 +44,21 @@ namespace WindowsWallpaper.UWP.ViewModels
             }
         }
 
+        private int _selectedIndex;
+
+        public int SelectedIndex
+        {
+            get { return _selectedIndex; }
+            set
+            {
+                if (_selectedIndex != value)
+                {
+                    _selectedIndex = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
 
         public async Task InitDataAsync()
         {
@@ -69,11 +84,45 @@ namespace WindowsWallpaper.UWP.ViewModels
             }
         }
 
-        public async Task SetAsBackGround()
+        public async Task<bool> SetAsBackGround()
         {
-
-             //UserProfilePersonalizationSettings.Current.TrySetWallpaperImageAsync(new )
+            var filename = Guid.NewGuid().ToString();
+            filename += SelectedImage.Source.AbsolutePath.Substring(SelectedImage.Source.AbsolutePath.LastIndexOf('.'));
+            var folder = await ApplicationData.Current.LocalFolder.CreateFolderAsync("lock", CreationCollisionOption.OpenIfExists);
+            StorageFile file = await folder.CreateFileAsync(filename, CreationCollisionOption.GenerateUniqueName);
+            BackgroundDownloader backgroundDownloader = new BackgroundDownloader();
+            DownloadOperation operation = backgroundDownloader.CreateDownload(SelectedImage.Source, file);
+            await operation.StartAsync();
+            var result = await UserProfilePersonalizationSettings.Current.TrySetWallpaperImageAsync(file);
+            await EnsureNewFolder(folder, filename);
+            return result;
         }
 
+        public async Task<bool> SetAsLockScreen()
+        {
+            var filename = Guid.NewGuid().ToString();
+            var folder = await ApplicationData.Current.LocalFolder.CreateFolderAsync("lock", CreationCollisionOption.OpenIfExists);
+            filename += SelectedImage.Source.AbsolutePath.Substring(SelectedImage.Source.AbsolutePath.LastIndexOf('.'));
+            StorageFile file = await folder.CreateFileAsync(filename, CreationCollisionOption.GenerateUniqueName);
+            BackgroundDownloader backgroundDownloader = new BackgroundDownloader();
+            DownloadOperation operation = backgroundDownloader.CreateDownload(SelectedImage.Source, file);
+            await operation.StartAsync();
+            var result = await UserProfilePersonalizationSettings.Current.TrySetLockScreenImageAsync(file);
+            await EnsureNewFolder(folder, filename);
+            return result;
+        }
+
+        public async Task<StorageFolder> EnsureNewFolder(StorageFolder folder, string filename)
+        {
+            var files = await folder.GetFilesAsync(Windows.Storage.Search.CommonFileQuery.DefaultQuery);
+            foreach (var item in files)
+            {
+                if (!item.Name.Contains(filename))
+                {
+                    await item.DeleteAsync(StorageDeleteOption.PermanentDelete);
+                }
+            }
+            return folder;
+        }
     }
 }
